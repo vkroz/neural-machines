@@ -1,21 +1,9 @@
-# LLMs-prompts-engineering
-Set of notebooks with summary of strategies for creating and evaluating prompts to obtain specific results from large language models, utilizing approaches like chain of thought, self-consistency, thought trees, RAG, and ReAct.
+# Neural Machines 
 
+Collection of  python scripts, and notebooks for exploratory learning of LLMs, agents and AI.
+Covers various prompts engineering techniques, RAG, ReAct, fine-tuning, and more.
 
 ## Setup work environment
 
-Install libmagic
-```shell
-# On linux
-apt-get install libmagic1
+`./scripts/setup-devenv.sh` will create a conda environment with the necessary dependencies.
 
-# On Mac
-brew install libmagic
-``` 
-
-
-```shell
-conda create -n llms python=3.12
-conda activate llms
-pip install -r requirements.txt
-```
