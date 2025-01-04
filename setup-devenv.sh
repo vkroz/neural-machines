@@ -7,26 +7,6 @@
 # 3. Generate requirements.txt for using by CI/CD pipelines with `pip install` command
 #------------------------
 
-# Function to find the project root (assumes the script is in ./scripts)
-find_project_root() {
-    local current_dir="$PWD"
-    while [[ "$current_dir" != "/" ]]; do
-        if [[ -d "$current_dir/scripts" ]]; then
-            echo "$current_dir"
-            return 0
-        fi
-        current_dir="$(dirname "$current_dir")"
-    done
-    echo "Error: Unable to find project root" >&2
-    return 1
-}
-
-# Find the project root
-PROJECT_ROOT=$(find_project_root)
-if [[ $? -ne 0 ]]; then
-    exit 1
-fi
-
 # Create conda environment
 ENV_NAME=neuman
 conda create --name ${ENV_NAME} python=3.12 -y
@@ -34,6 +14,8 @@ source $HOME/miniconda3/etc/profile.d/conda.sh
 conda activate ${ENV_NAME}
 conda install fastapi uvicorn tqdm pytest python-dotenv boto3 -c conda-forge -y
 conda install numpy pandas scikit-learn matplotlib seaborn jupyter -c conda-forge -y
+conda install sqlalchemy psycopg2-binary pydantic -c conda-forge -y
+
 
 # Additional packages we will need in the future
 #conda install transformers datasets -c huggingface -y
@@ -44,6 +26,7 @@ conda install numpy pandas scikit-learn matplotlib seaborn jupyter -c conda-forg
 #------------------------
 # Generate requirements.txt
 #------------------------
+PROJECT_ROOT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )" # Find the current script directory
 
 # List of packages to include in requirements.txt
 packages=(
@@ -59,6 +42,9 @@ packages=(
     "matplotlib"
     "seaborn"
     "jupyter"
+    "sqlalchemy"
+    "psycopg2-binary"
+    "pydantic"
 )
 
 # Create or overwrite requirements.txt in the project root
