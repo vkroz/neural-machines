@@ -1,14 +1,41 @@
-fastapi~=0.111.0
-uvicorn~=0.30.1
-tqdm~=4.66.4
-pytest~=8.2.2
-python-dotenv~=1.0.1
-boto3~=1.34.142
-numpy~=2.0.0
-pandas~=2.2.2
-scikit-learn~=1.5.1
-matplotlib~=3.8.4
-seaborn~=0.13.2
-jupyter~=1.0.0
+# Data manipulation and analysis
+numpy
+pandas
+scipy
+pyarrow
+fastparquet
 
-`
+# Machine Learning
+scikit-learn
+torch
+torchvision
+xgboost
+sentence-transformers
+
+# Deep Learning extras
+transformers
+hnswlib
+
+
+# Data Visualization
+matplotlib
+seaborn
+plotly
+
+# Jupyter environment
+jupyter
+jupyterlab
+ipykernel
+
+# Utilities
+tqdm
+pytest
+black
+pylint
+
+# Full stack dependencies
+fastapi
+uvicorn
+
+# Environment
+python-dotenv

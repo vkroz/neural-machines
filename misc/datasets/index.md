@@ -1,4 +1,0 @@
-- https://kili-technology.com/data-labeling/machine-learning/24-best-machine-learning-datasets-for-chatbot-training
-- https://nlp.cs.washington.edu/ambigqa/
-- https://github.com/bitext/customer-support-intent-detection-training-dataset/tree/main/data/train
-- 
