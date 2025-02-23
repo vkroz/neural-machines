@@ -11,8 +11,7 @@ torch
 torchvision
 xgboost
 sentence-transformers
-
-# Deep Learning extras
+datasets
 transformers
 hnswlib
 

@@ -12,26 +12,41 @@ Covers various prompts engineering techniques, RAG, ReAct, fine-tuning, and more
 
 ## Setup on local machine:
 
-1.Have miniconda installed. While we don't use conda directly, as of March 2025 it is needed to resolve build errors in hnswlib on MacOS with Apple Silicon.
-
-2. Install virtual environment
+### Prerequisites
+1. Have miniconda installed
 ```
-# Set local Python version
-mise use python@3.12
-
-# Create and activate a virtual environment
-python -m venv .venv
-source .venv/bin/activate
-pip install --upgrade pip
-
-# Install packages
-pip install -r requirements.txt
+curl -O https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-arm64.sh
+bash ./Miniconda3-latest-MacOSX-arm64.sh
+rm ./Miniconda3-latest-MacOSX-arm64.sh
 ```
 
-# Setup GIT lfs
-
+2. Setup GIT lfs
 ```
 brew install git-lfs
 git lfs install
 ```
+
+### Configure virtual environment
+```
+conda create -n neumans python=3.10
+conda activate neumans
+
+conda install -c conda-forge pytorch
+conda install -c conda-forge transformers
+conda install -c conda-forge datasets
+conda install -c conda-forge pandas
+conda install -c conda-forge pyarrow
+conda install -c conda-forge scikit-learn
+conda install -c conda-forge sentencepiece protobuf hnswlib
+conda install -c conda-forge jupyter matplotlib seaborn plotly
+```
+
+### Activate virtual environment
+
+```
+conda activate neumans
+```
+
+
+
 
