@@ -26,23 +26,14 @@ brew install git-lfs
 git lfs install
 ```
 
-### Configure virtual environment
-```
-conda create -n neumans python=3.10
-conda activate neumans
+### Use virtual environment
 
-conda install -c conda-forge pytorch
-conda install -c conda-forge transformers
-conda install -c conda-forge datasets
-conda install -c conda-forge pandas
-conda install -c conda-forge pyarrow
-conda install -c conda-forge scikit-learn
-conda install -c conda-forge sentencepiece protobuf hnswlib
-conda install -c conda-forge jupyter matplotlib seaborn plotly
+Create from config file
+```
+conda env create -f environment.yml
 ```
 
-### Activate virtual environment
-
+Activate to use
 ```
 conda activate neumans
 ```
