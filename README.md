@@ -30,7 +30,11 @@ git lfs install
 
 Create from config file
 ```
-conda env create -f environment.yml
+# For MacOS
+conda env create -f environment-macos.yml
+
+# For Linux
+conda env create -f environment-linux.yml
 ```
 
 Activate to use
@@ -38,6 +42,22 @@ Activate to use
 conda activate neumans
 ```
 
+### Sync to remote server
 
+```
+./sync_to_remote.sh
+```
 
+### To create conda env from scratch manually
 
+```
+conda create -n neumans python=3.10
+conda activate neumans
+
+conda install -c pytorch pytorch torchvision -y
+conda install -c conda-forge transformers datasets -y
+conda install -c conda-forge scikit-learn -y
+conda install -c conda-forge jupyter matplotlib seaborn plotly -y
+conda install sentencepiece protobuf -y
+pip install hnswlib
+```
