@@ -67,4 +67,3 @@ Save config file from current environment
 ```
 conda env export > environment-macos.yml
 ```
-
