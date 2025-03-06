@@ -310,6 +310,10 @@ dependencies:
   - zstandard=0.23.0=py310h1a4646a_1
   - zstd=1.5.6=hfb09047_0
   - pip:
+      - accelerate==1.4.0
       - datasets==3.3.2
+      - dotenv==0.9.9
       - fsspec==2023.9.2
       - hnswlib==0.8.0
+      - python-dotenv==1.0.1
+prefix: /Users/vladimirkroz/miniconda3/envs/neumans

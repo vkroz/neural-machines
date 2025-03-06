@@ -20,12 +20,15 @@ import pandas as pd
 from datasets import load_dataset
 import logging
 
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
+
 # Configuration
 config = {
     'model_name': 'distilbert-base-uncased',  # Lightweight distilled model for semantic search
     'batch_size': 32, 
-    'epochs': 7,
-    'learning_rate': 2e-5,
+    'epochs': 2,
+    'learning_rate': 2e-3,
     'max_length': 128
 }
 
@@ -59,7 +62,7 @@ class AmazonESCIDataset(Dataset):
         self.products = products_df
         self.tokenizer = tokenizer
         self.max_length = max_length
-        self.label_map = {'E': 1.0, 'S': 0.8, 'C': 0.3, 'I': 0.0}
+        self.label_map = {'Exact': 1.0, 'Substitute': 0.8, 'Complement': 0.3, 'Irrelevant': 0.0}
         
     def __len__(self):
         return len(self.queries)
@@ -109,7 +112,8 @@ class AmazonESCIDataset(Dataset):
         }
 
 # Training Function
-def train_epoch(model, dataloader, optimizer, criterion, device):
+def train_epoch(epoch: int, model: BiEncoder, dataloader: DataLoader, optimizer: torch.optim.AdamW, criterion: nn.MSELoss, device: torch.device) -> float:
+    logger.info(f"Training epoch {epoch + 1}...")
     model.train()
     total_loss = 0
     
@@ -139,8 +143,9 @@ def load_and_prepare_data():
     train_df = esci["train"].to_pandas()
     val_df = esci["test"].to_pandas()
     
-    # Filter US locale data if needed
-    # esci_us = train_df[train_df["product_locale"] == "us"]
+    # Filter for entries with small_version==1
+    train_df = train_df[train_df["small_version"] == 1]
+    val_df = val_df[val_df["small_version"] == 1]
     
     print(f"Loaded {len(train_df)} training examples and {len(val_df)} validation examples")
     return train_df, val_df
@@ -176,7 +181,7 @@ def main():
     # Training loop
     print("Starting training...")
     for epoch in range(config['epochs']):
-        train_loss = train_epoch(model, train_loader, optimizer, criterion, device)
+        train_loss = train_epoch(epoch, model, train_loader, optimizer, criterion, device)
         print(f'Epoch {epoch + 1}/{config["epochs"]}, Loss: {train_loss:.4f}')
     
     # Save model
