@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Local and remote paths
-LOCAL_PATH="/Users/vkroz/workplace/vkroz/neural-machines/"
-REMOTE_PATH="clouddesk:/home/vkroz/workplace/vkroz/neural-machines/"
+LOCAL_PATH=`pwd`
+REMOTE_PATH="remote_host:/path/on/remote/host"
 
 echo "Starting sync script..."
 echo "Monitoring: $LOCAL_PATH"
