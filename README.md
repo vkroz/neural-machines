@@ -48,7 +48,7 @@ conda activate neumans
 ./sync_to_remote.sh
 ```
 
-### Mamanging conda environments
+### Mananging conda environments
 
 Create from scratch
 ```
