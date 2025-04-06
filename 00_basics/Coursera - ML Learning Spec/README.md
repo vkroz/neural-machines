@@ -11,3 +11,12 @@ conda activate coursera_ml
 ```bash
 
 ```
+
+
+# Misc
+
+Save config file from current environment
+```bash
+conda env export > environment-coursera_ml.yml
+```
+
