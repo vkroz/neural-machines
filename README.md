@@ -67,3 +67,63 @@ Save config file from current environment
 ```
 conda env export > environment-macos.yml
 ```
+
+## Work with GPU
+
+### Verify MPS (Metal Performance Shaders) Support
+
+```python
+import torch
+
+print(f"PyTorch version: {torch.__version__}")
+
+# Check MPS availability
+if torch.backends.mps.is_available():
+    print("✅ MPS (Apple Silicon GPU) available: True")
+    device = torch.device("mps")
+    print(f"Using device: {device}")
+else:
+    print("❌ MPS not available")
+    device = torch.device("cpu")
+
+# Test with a simple tensor
+x = torch.randn(3, 3).to(device)
+print(f"Tensor on {device}: {x}")
+```
+
+### Using M3 Max GPU
+
+```python
+import torch
+import torch.nn as nn
+
+# Your M3 Max has 40 GPU cores - excellent for deep learning!
+if torch.backends.mps.is_available():
+    device = torch.device("mps")
+    print("�� Using Apple M3 Max GPU (40 cores)")
+else:
+    device = torch.device("cpu")
+    print("Using CPU")
+
+# Example neural network
+class SimpleNN(nn.Module):
+    def __init__(self):
+        super(SimpleNN, self).__init__()
+        self.fc1 = nn.Linear(10, 20)
+        self.fc2 = nn.Linear(20, 1)
+    
+    def forward(self, x):
+        x = torch.relu(self.fc1(x))
+        x = self.fc2(x)
+        return x
+
+# Move model to GPU
+model = SimpleNN().to(device)
+print(f"Model moved to: {next(model.parameters()).device}")
+
+# Test with data
+data = torch.randn(100, 10).to(device)
+output = model(data)
+print(f"Output shape: {output.shape}")
+print(f"Output device: {output.device}")
+```
