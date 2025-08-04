@@ -4,5 +4,10 @@
     "python.defaultInterpreterPath": "/Users/vladimirkroz/miniconda3/envs/neumans/bin/python",
     "python.analysis.diagnosticSeverityOverrides": {
         "reportAttributeAccessIssue": "none"
-    }
+    },
+    "cursorpyright.analysis.autoImportCompletions": true,
+    "cursorpyright.analysis.diagnosticSeverityOverrides": {
+        "reportAttributeAccessIssue": "none"
+    },
+    "cursorpyright.analysis.typeCheckingMode": "basic"
 }
