@@ -50,8 +50,8 @@ conda activate neumans
 
 ### Mananging conda environments
 
-Create from scratch
-```
+**Create from scratch
+**```
 conda create -n neumans python=3.10
 conda activate neumans
 
@@ -63,10 +63,18 @@ pip install torch torchvision
 pip install hnswlib
 ```
 
-Save config file from current environment
-```
+**Save config file from current environment
+**```
 conda env export > environment-macos.yml
 ```
+
+
+**Update existing environment **
+
+```bash
+conda env update -n neumans -f environment-macos.yml
+```
+
 
 ## Work with GPU
 
