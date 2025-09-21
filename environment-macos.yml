@@ -311,6 +311,7 @@ dependencies:
   - mido=1.2.10
   - pydub=0.25.1
   - ffmpeg=4.3.2
+  - emoji=2.14.1
   - pip:
       - absl-py==2.3.1
       - accelerate==1.4.0
