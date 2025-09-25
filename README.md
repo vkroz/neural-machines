@@ -42,40 +42,6 @@ Activate to use
 conda activate neumans
 ```
 
-### Sync to remote server
-
-```
-./sync_to_remote.sh
-```
-
-### Mananging conda environments
-
-**Create from scratch
-**```
-conda create -n neumans python=3.10
-conda activate neumans
-
-conda install -c conda-forge transformers datasets -y
-conda install -c conda-forge scikit-learn -y
-conda install -c conda-forge jupyter matplotlib seaborn plotly -y
-conda install sentencepiece protobuf -y
-pip install torch torchvision
-pip install hnswlib
-```
-
-**Save config file from current environment
-**```
-conda env export > environment-macos.yml
-```
-
-
-**Update existing environment **
-
-```bash
-conda env update -n neumans -f environment-macos.yml
-```
-
-
 ## Work with GPU
 
 ### Verify MPS (Metal Performance Shaders) Support
